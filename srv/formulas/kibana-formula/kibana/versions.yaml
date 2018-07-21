@@ -1,0 +1,20 @@
+# take a look at github pull request #16 before editing here
+{% if(salt['pillar.get']('kibana:repoVersion')) %}
+  {% set versionRepo = salt['pillar.get']('kibana:repoVersion') %}
+  {% if versionRepo.startswith('5.') %}
+{{ versionRepo }}:
+  repo_url: https://artifacts.elastic.co/packages/5.x/apt
+  configfile: /etc/kibana/kibana.yml
+  {% endif %}
+{% endif %}
+
+'5':
+  repo_url: https://artifacts.elastic.co/packages/5.x/apt
+  configfile: /etc/kibana/kibana.yml
+
+'4.6':
+  repo_url: http://packages.elastic.co/kibana/4.6/debian
+  configfile: /opt/kibana/config/kibana.yml
+'4.5':
+  repo_url: http://packages.elastic.co/kibana/4.5/debian
+  configfile: /opt/kibana/config/kibana.yml

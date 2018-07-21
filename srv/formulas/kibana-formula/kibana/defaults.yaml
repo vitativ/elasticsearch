@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+kibana:
+  pkg: kibana 
+  configfile: '/etc/kibana/kibana.yml' 
+  source: false 
+  repoVersion: "5.1" # Elastic repo version
+  sourceVersion: "5.1.1" # We need some version to not crash if nobody sets this
+  sources:
+    installPath: '/etc/kibana/' # This is where the package
+    baseURL: "https://www.elastic.co/downloads/past-releases/" 
+  service:
+    name: kibana 
+  config:
+    server.port:5601
+    server.host: "localhost"
+    elasticsearch.url: "http://localhost:9200"

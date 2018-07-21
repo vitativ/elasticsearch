@@ -1,2 +1,8 @@
 master: localhost
 file_client: local
+
+file_roots:
+  base:
+    - /srv/salt
+    - /srv/formulas/elasticsearch-formula
+    - /srv/formulas/epel-formula

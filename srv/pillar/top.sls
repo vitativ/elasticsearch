@@ -1,0 +1,5 @@
+base:
+  '*':
+    - elasticsearch
+#    - logstash
+    - mine

@@ -1,0 +1,41 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{## Start with  defaults from defaults.sls ##}
+{% import_yaml 'kibana/defaults.yaml' as default_settings %}
+{% import_yaml 'kibana/versions.yaml' as version_map %}
+
+{##
+Setup variable using grains['os_family'] based logic, only add key:values here
+that differ from whats in defaults.yaml
+
+Beware, the osmap is currently not used and contains fillers. See defaults.yaml.
+This is because OS-specific overrides are not currently looked after for /opt.
+##}
+{% set os_family_map = salt['grains.filter_by']({
+  'Debian': {
+    "sourceInstallPath": '/opt/kibana/',
+    'use_upstream_repo': True,
+  },
+  'Suse': {
+    "sourceInstallPath": '/opt/kibana/',
+    'use_upstream_repo': True,
+  },
+  'Arch': {
+    "sourceInstallPath": '/opt/kibana/',
+    'use_upstream_repo': True,
+  },
+  'RedHat': {
+    "sourceInstallPath": '/etc/kibana/',
+    'use_upstream_repo': True,
+  },
+  }, grain="os_family", merge=salt['pillar.get']('kibana:lookup'))
+%}
+{## Merge the flavor_map to the default settings ##}
+{% do default_settings.kibana.update(os_family_map) %}
+
+{%- set version = salt['pillar.get']('kibana:repoVersion', default_settings.kibana['repoVersion']) %}
+{%- do default_settings.kibana.update(version_map[version]) %}
+
+{## Merge in kibana:lookup pillar ##}
+{% set kibana = salt['pillar.get']('kibana',default=default_settings.kibana,merge=True) %}

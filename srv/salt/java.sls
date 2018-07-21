@@ -1,6 +1,6 @@
-
+{% from "map.jinja" import common_pkgs with context %}
 
 install common_packages:
   pkg.installed:
     - pkgs:
-      - java-1.8.0-openjdk-devel
+      - {{ common_pkgs.java }}

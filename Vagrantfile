@@ -69,6 +69,8 @@ Vagrant.configure("2") do |config|
   # SHELL
   
   config.vm.synced_folder "srv/salt/", "/srv/salt/"
+  config.vm.synced_folder "srv/pillar/", "/srv/pillar/"
+  config.vm.synced_folder "srv/formulas/", "/srv/formulas/"
 
   config.vm.provision :salt do |salt|
     salt.minion_config = "srv/salt/minion.yml"

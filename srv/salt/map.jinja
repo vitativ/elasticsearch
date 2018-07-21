@@ -1,0 +1,9 @@
+{% set common_pkgs = salt['grains.filter_by']({
+  'default': {  
+    'nginx': 'nginx',
+    'httpd_tools': 'httpd-tools',
+	'kibana': 'kibana-5.1.1-x86_64.rpm',
+	'wget': 'wget',
+    'logstash': 'logstash-5.1.1.rpm',	
+    'java': 'java-1.8.0-openjdk-devel'}
+}, base='default') %}
