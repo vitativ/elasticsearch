@@ -23,3 +23,15 @@ install filebeat:
 filebeat:
   service.running:
     - enable: True
+
+/etc/ssh/sshd_config:
+  file.replace:
+    - pattern: PasswordAuthentication no
+    - repl: PasswordAuthentication yes
+
+sshd:
+  service.running:
+    - enable: True
+    - reload: True
+    - watch:
+      - file: /etc/ssh/sshd_config
