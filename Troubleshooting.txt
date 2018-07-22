@@ -19,4 +19,8 @@ subjectAltName = IP: <IP_Address>
    The problem may occur if listening port is not 80 or 8080 which are supported.
    Another solution is to leave SElinux enabled and add the port to allowed list:
    semanage port -a -t http_port_t  -p tcp 8090
+----------------------------------------------------------------------------------------------------------------
+6. If "Unable to fetch mapping" issue occurs while creating new index in Kibana, check the following logs:
+   for the client /var/log/filebeat/filebeat
+   for the server /var/log/logstash/logstash-plain.log
    
