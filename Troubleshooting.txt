@@ -11,3 +11,12 @@ subjectAltName = IP: <IP_Address>
 ----------------------------------------------------------------------------------------------------------------
 4. Verify on ELKstack machine that the following ports are listening (netstat -plntu): 9200, 5601, 8080, 5443
    May need to install net-tools to run netstat
+----------------------------------------------------------------------------------------------------------------
+5. If nginx service is not running (http port is not listening), need to disable SElinux:
+   Edit /etc/sysconfig/selinux:
+   SELINUX=disabled
+   Reboot the machine
+   The problem may occur if listening port is not 80 or 8080 which are supported.
+   Another solution is to leave SElinux enabled and add the port to allowed list:
+   semanage port -a -t http_port_t  -p tcp 8090
+   
