@@ -37,6 +37,8 @@ Run logger_bombing.sh from /vagrant on Filebeat client machine.
 
 Go to :
 http://<ELK-server-IP>:8080/app/kibana
+user: admin
+password: kibana
 And see the logs comming in.
 
 
