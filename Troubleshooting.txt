@@ -1,0 +1,13 @@
+In case of issues, check the following:
+
+1. Login to ELKstack machine and verify /etc/pki/tls/openssl.cnf was update with ELKstack machine IP:
+[ v3_ca ]
+# Server IP Address
+subjectAltName = IP: <IP_Address>
+2. If not,update and restart logstash service: systemctl restart logstash
+----------------------------------------------------------------------------------------------------------------
+3. The listening port at /etc/nginx/conf.d/kibana.conf should be identical to the one defined in 
+   ELKstack Vagrantfile.
+----------------------------------------------------------------------------------------------------------------
+4. Verify on ELKstack machine that the following ports are listening (netstat -plntu): 9200, 5601, 8080, 5443
+   May need to install net-tools to run netstat
