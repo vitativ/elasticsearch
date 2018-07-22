@@ -4,12 +4,12 @@ This plugin enables files transfer to salt minion during provisioning.
 
 Machines setup:
 1. Create new folder for ELK server vm called "ELKstack"
-2. Copy the content of this repo into the ELKstack folder
+2. Clone this repo into the ELKstack folder
 3. Rename Vagrantfile_server to Vagrantfile
 4. Run "vagrant up" in command line while prompted to ELKstack folder
 
 5. Create new folder for filebeat client vm called "Filebeat_client1"
-6. Copy the content of this repo into the Filebeat_client1 folder
+6. Clone this repo into the Filebeat_client1 folder
 7. Rename Vagrantfile_client to Vagrantfile
 8. Run "vagrant up" in command line while prompted to Filebeat_client1 folder
 
