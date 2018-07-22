@@ -32,13 +32,14 @@ Modify /etc/filebeat/filebeat.yml on Filebeat_client1 with correct ELKstack_IP:
 Restart filebeat service:
 systemctl restart filebeat
 ---------------------------------------------------------------------------------------------------------------------
-Bombing the logs file:
-Run logger_bombing.sh from /vagrant on Filebeat client machine.
-
 Go to :
 http://<ELK-server-IP>:8080/app/kibana
 user: admin
 password: kibana
-And see the logs comming in.
+Create a new default index 'filebeat-*', choose @timestamp in time field name and click on the 'Create' button.
+
+Bombing the logs file:
+Run logger_bombing.sh from /vagrant on Filebeat client machine.
+And see the logs comming in Kibana.
 
 
