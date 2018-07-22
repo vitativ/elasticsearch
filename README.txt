@@ -20,12 +20,12 @@ In the "real world", we can keep server IP in some database, extract it and use 
 
 Login to the ELKstack server. Copy the certificate file from the ELKstack server to the Filebeat client:
 ssh root@Filebeat_client1_IP
-scp root@ELKstack_IP:~/logstash-forwarder.crt .
+scp root@ELKstack_IP:/etc/pki/tls/certs/logstash-forwarder.crt .
 TYPE ELKstack server password
 sudo mkdir -p /etc/pki/tls/certs/
-mv ~/logstash-forwarder.crt /etc/pki/tls/certs/
+mv logstash-forwarder.crt /etc/pki/tls/certs/
 
-Modify /etc/filebeat/filebeat.yml with correct ELKstack_IP:
+Modify /etc/filebeat/filebeat.yml on Filebeat_client1 with correct ELKstack_IP:
 # The Logstash hosts
   hosts: ["ELKstack_IP:5443"]
   
