@@ -8,9 +8,6 @@ include:
 {%- if jvm_opts %}
 /etc/elasticsearch/jvm.options:
   file.managed:
-    - mode: 0770
-    - user: elasticsearch
-    - group: elasticsearch
     - contents: {{ jvm_opts }}
     - watch_in:
       - service: elasticsearch

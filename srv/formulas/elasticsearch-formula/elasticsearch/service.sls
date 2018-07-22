@@ -2,6 +2,14 @@ include:
   - elasticsearch.pkg
   - elasticsearch.config
 
+/usr/lib/systemd/system/elasticsearch.service:
+  file.uncomment:
+    - regex: LimitMEMLOCK=infinity
+
+update-systemd:
+  cmd.run:
+    - name: systemctl daemon-reload
+
 elasticsearch_service:
   service.running:
     - name: elasticsearch

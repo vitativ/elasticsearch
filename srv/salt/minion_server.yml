@@ -1,0 +1,11 @@
+master: localhost
+file_client: local
+grains:
+  roles:
+    - server
+
+file_roots:
+  base:
+    - /srv/salt
+    - /srv/formulas/elasticsearch-formula
+    - /srv/formulas/epel-formula

@@ -6,14 +6,14 @@ install logstash:
         wget https://artifacts.elastic.co/downloads/logstash/{{ common_pkgs.logstash }}
         rpm -ivh {{ common_pkgs.logstash }}
 
-{% set server_ip =  salt['mine.get']('*','network.ip_addrs') %}
+#{% set server_ip =  salt['mine.get']('*','network.ip_addrs') %}
+#{% set server_ip = grains['ipv4'][0] %}
+{% set server_ip = grains['ip_interfaces']['eth1'][0] %}
 /etc/pki/tls/openssl.cnf:
-  file.line:
-    - mode: ensure
-    - content: |
-        [ v3_ca ]
-        subjectAltName = IP: {{ server_ip }}
-    - match: "[ v3_ca ]"
+  file.blockreplace:
+    - marker_start: "[ v3_ca ]"
+    - marker_end: "# Extensions for a typical CA"
+    - content: "subjectAltName = IP: {{ server_ip }}"
 
 generate cert file:
   cmd.run:
