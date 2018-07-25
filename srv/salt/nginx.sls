@@ -16,9 +16,7 @@ remove default virtual host:
   file.append:
     - text: |
         server {
-        	listen 8080;
-
-            server_name elk-stack.co;
+        	listen 8080 default_server;
 
             auth_basic "Restricted Access";
             auth_basic_user_file /etc/nginx/.kibana-user;
