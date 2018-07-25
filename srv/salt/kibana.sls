@@ -16,8 +16,18 @@ install kibana:
     - contents: |
         server.port: 5601
         server.host: "localhost"
-        elasticsearch.url: "http://localhost:9200"	
+        elasticsearch.url: "http://localhost:9200"
 
 kibana:
   service.running:
     - enable: True
+
+temporary_disable_selinux:
+  cmd.run:
+    - name: setenforce 0 > /dev/null 2>&1
+
+/etc/sysconfig/selinux:
+  file.replace:
+    - name: /etc/sysconfig/selinux
+    - pattern: SELINUX=enforcing
+    - repl: SELINUX=disabled
