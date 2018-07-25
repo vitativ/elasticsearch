@@ -4,6 +4,7 @@ install packages:
   pkg.installed:
     - pkgs:
       - {{ common_pkgs.wget }}
+      - {{ net-tools }}
 
 install kibana:
   cmd.run:
