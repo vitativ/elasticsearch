@@ -95,7 +95,7 @@ filebeat.prospectors:
 output.logstash:
   # The Logstash hosts
   hosts: ["localhost:5044"]
-  hosts: ["10.0.15.10:5443"]
+  hosts: ["192.168.30.10:5443"]
   bulk_max_size: 1024
   ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
   template.name: "filebeat"
