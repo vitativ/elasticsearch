@@ -30,17 +30,17 @@ To run the test setup, please make sure the following software is installed on y
 
         vagrant up
 
-### Update client configuration and verify logs
+### Update client configuration
 
-* Get logstash certificate:
+* Get logstash certificate from the server:
 
 		vagrant scp server:/etc/pki/tls/certs/logstash-forwarder.crt .
 
-* Upload certificate to the client
+* Upload logstash certificate to the client:
 
 		vagrant scp logstash-forwarder.crt client:/tmp/logstash-forwarder.crt
 
-* Prep logstash certificate on the client and populate logs:
+* Prep logstash certificate on the client:
 
 		vagrant ssh client
 		sudo cp /tmp/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
@@ -52,6 +52,8 @@ To run the test setup, please make sure the following software is installed on y
 * Create a new default index `filebeat-*`, choose @timestamp in time field name and click on the **Create** button.
 
 ![index](images/kibana_index_create.jpg)
+
+###  Verify logs
 
 * Run logger bomber:
 
